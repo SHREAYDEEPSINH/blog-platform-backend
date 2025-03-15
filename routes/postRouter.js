@@ -28,7 +28,7 @@ postRouter.post("/post", protect, authorize("author", "admin"), PostModel.imageU
 })
 
 postRouter.get("/getPost", async (req, res) => {
-    const postDetails = await PostModel.find()
+    const postDetails = await PostModel.find().sort({createdAt: -1})
     res.status(200).json({ postDetails })
 })
 
